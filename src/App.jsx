@@ -13,13 +13,17 @@ export const App = () => {
   };
 
   const handleIncrease = () => {
-    const shouldAddHundred = count % 5 === 0;
+    setCount(prevCount => {
+      const shouldAdd100 = prevCount % 5 === 0;
 
-    addOne();
+      let nextCount = prevCount + 1;
 
-    if (shouldAddHundred) {
-      add100();
-    }
+      if (shouldAdd100) {
+        nextCount += 100;
+      }
+
+      return nextCount;
+    });
   };
 
   return (
